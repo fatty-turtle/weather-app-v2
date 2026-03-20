@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function LiveClock({ tzId }) {
+export default function LiveClock({ tzId, size }) {
   const [angles, setAngles] = useState({ hour: 0, minute: 0, second: 0 });
 
   const timerRef = useRef(null);
 
   useEffect(() => {
+    if (!tzId) return;
     const tick = () => {
       const parts = new Intl.DateTimeFormat("en-GB", {
         timeZone: tzId,
@@ -83,7 +84,7 @@ export default function LiveClock({ tzId }) {
   });
 
   return (
-    <div className="live-clock">
+    <div className="live-clock" style={{ width: size, height: size }}>
       <svg viewBox="0 0 200 200" className="live-clock-svg">
         {/* Outer ring */}
         <circle
