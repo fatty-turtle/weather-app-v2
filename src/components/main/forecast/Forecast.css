@@ -163,17 +163,26 @@
   font-size: 0.75rem;
   text-align: center;
   color: var(--text-lowlight);
-}
-
-@media (min-width: 640px) {
-  .forecast-card .condition-text {
-    font-size: 0.875rem;
-  }
+  min-width: 130px;
 }
 
 @media (min-width: 768px) {
   .forecast-card .condition-text {
     font-size: 1rem;
+    min-width: 50px;
+    min-width: 130px;
+  }
+}
+
+@media (min-width: 640px) {
+  .forecast-card .condition-text {
+    font-size: 0.875rem;
+    min-width: 60px;
+  }
+}
+@media (max-width: 330px) {
+  .forecast-card .condition-text {
+    min-width: 0;
   }
 }
 
