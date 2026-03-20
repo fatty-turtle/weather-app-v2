@@ -1,6 +1,6 @@
-import Forecast from "./Forecast";
+import Forecast from "./forecast/Forecast";
 import AppStatus from "./AppStatus";
-import InfoBox from "./InfoBox";
+import InfoBox from "./info-box/InfoBox";
 
 import "./Main.css";
 

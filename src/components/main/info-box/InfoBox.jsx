@@ -1,11 +1,11 @@
-import LiveClock from "./LiveClock";
-import Compass from "./Compass";
+import LiveClock from "./LiveClock.jsx";
+import Compass from "./Compass.jsx";
 
 import {
   getTempLabel,
   getWindLabel,
   getVisLabel,
-} from "../../utils/unitConverter.js";
+} from "../../../utils/unitConverter.js";
 
 export default function InfoBox({ current, location, isMetric }) {
   const date = location.localtime.slice(0, 10);
