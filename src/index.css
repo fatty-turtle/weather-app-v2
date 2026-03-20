@@ -12,6 +12,7 @@
     --text-normal: #1e293b;
     --text-highlight: #38bdf8;
     --text-lowlight: #64748b;
+    --accent: #38bdf8;
     --error: #ef4444;
     --glow: rgba(56, 189, 248, 0.2);
 
@@ -45,6 +46,7 @@
     --text-normal: #f8fafc;
     --text-highlight: #38bdf8;
     --text-lowlight: #94a3b8;
+    --accent: #38bdf8;
     --error: #f87171;
     --glow: rgba(56, 189, 248, 0.15);
   }
