@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-
+import "./LiveClock.css";
 export default function LiveClock({ tzId, size }) {
   const [angles, setAngles] = useState({ hour: 0, minute: 0, second: 0 });
 

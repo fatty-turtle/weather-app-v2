@@ -1,0 +1,64 @@
+/* Compass Styles — mirrors LiveClock.css architecture */
+.compass {
+  display: inline-block;
+  width: clamp(120px, 20vw, 180px);
+  height: clamp(120px, 20vw, 180px);
+}
+
+.compass-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.compass-label {
+  fill: var(--text-normal);
+  stroke: var(--foreground);
+  stroke-width: 0.4;
+  font-family: var(--font-family-sans);
+}
+
+.compass-label-north {
+  fill: var(--text-highlight);
+  stroke: var(--text-highlight);
+  stroke-width: 0.3;
+}
+
+/* Needle halves */
+.needle-north {
+  fill: var(--text-highlight);
+  filter: drop-shadow(0 0 4px var(--text-highlight));
+}
+
+.needle-south {
+  fill: var(--foreground);
+  opacity: 0.55;
+  filter: drop-shadow(0 0 2px var(--glow));
+}
+
+.compass-direction {
+  font-family: var(--font-family-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, var(--text-normal));
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.dark .compass-svg {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.dark .compass-label {
+  stroke-width: 0.25;
+}
+
+.dark .needle-north {
+  filter: drop-shadow(0 0 6px var(--text-highlight));
+}
+
+.dark .needle-south {
+  opacity: 0.45;
+}
