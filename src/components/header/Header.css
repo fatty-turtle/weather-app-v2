@@ -1,0 +1,45 @@
+header {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid;
+}
+
+button {
+  background: var(--btn-bg);
+  color: var(--text-color);
+  border: 1px solid var(--color-text-normal);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  height: 40px;
+  border-radius: 10px;
+}
+
+input {
+  background: var(--btn-bg);
+  color: var(--text-color);
+  border: 1px solid var(--color-text-normal);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 40px;
+  border-radius: 10px;
+}
+
+button:hover {
+  background: var(--btn-hover-bg);
+  transform: scale(1.05);
+}
+
+#tip-indicator {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 11px;
+  position: relative;
+  z-index: 1;
+}
