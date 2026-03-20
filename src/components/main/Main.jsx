@@ -2,6 +2,8 @@ import Forecast from "./Forecast";
 import AppStatus from "./AppStatus";
 import InfoBox from "./InfoBox";
 
+import "./Main.css";
+
 export default function Main({ weatherData, loading, error, isMetric }) {
   if (loading)
     return (
@@ -22,6 +24,7 @@ export default function Main({ weatherData, loading, error, isMetric }) {
       <InfoBox
         current={weatherData.current}
         location={weatherData.location}
+        isMetric={isMetric}
       ></InfoBox>
       <Forecast forecast={weatherData.forecast}></Forecast>
     </main>
