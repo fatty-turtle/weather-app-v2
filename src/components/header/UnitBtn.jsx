@@ -29,7 +29,7 @@ export default function UnitBtn({ isMetric, onToggle }) {
       {tip && (
         <div
           id="tip-box"
-          className="absolute right-4 mt-1 bg-background border border-dotted border-text-normal rounded shadow-md px-3 py-2 text-sm z-10 whitespace-nowrap"
+          className="absolute right-4 mt-1 bg-background border border-dotted border-text-normal rounded-2xl shadow-md px-3 py-2 text-sm z-10 whitespace-nowrap"
         >
           Convert Units (C/F, mph/kph, km/miles)
         </div>

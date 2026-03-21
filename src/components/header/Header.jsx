@@ -10,13 +10,13 @@ export default function Header({
   onUnitToggle,
 }) {
   return (
-    <header className="flex flex-col justify-between gap-2.5 sm:flex-row">
+    <header>
       <SearchBar
         city={city}
         onCityChange={onCityChange}
         handleSearch={handleSearch}
       />
-      <div className="flex flex-col justify-between gap-2.5 sm:flex-row">
+      <div className="btn-container">
         <ThemeBtn />
         <UnitBtn isMetric={isMetric} onToggle={onUnitToggle} />
       </div>

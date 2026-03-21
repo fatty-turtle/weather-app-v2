@@ -3,7 +3,7 @@
 @layer base {
   :root {
     --background: #f8fafc;
-    --background-secondary: #e2e8f0;
+    --background-secondary: rgb(246, 244, 244);
     --background-card: #ffffff;
     --foreground: #0f172a;
     --button-bg: #38bdf8;
@@ -37,7 +37,7 @@
 
   .dark {
     --background: #0f172a;
-    --background-secondary: #1e293b;
+    --background-secondary: #232c3a;
     --background-card: #020617;
     --foreground: #f8fafc;
     --button-bg: #38bdf8;

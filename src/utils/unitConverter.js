@@ -10,11 +10,11 @@ export const getWindSpeed = (valueKph, isMetric) => {
   return Math.round(valueKph * 0.621371);
 };
 
-export const getWindLabel = (isMetric) => (isMetric ? "kph" : "mph");
+export const getWindLabel = (isMetric) => (isMetric ? " kph" : " mph");
 
 export const getVis = (valueKm, isMetric) => {
   if (isMetric) return valueKm;
   return Math.round(valueKm * 0.621371);
 };
 
-export const getVisLabel = (isMetric) => (isMetric ? "km" : "miles");
+export const getVisLabel = (isMetric) => (isMetric ? " km" : " miles");

@@ -1,3 +1,4 @@
+import "./InfoBox.css";
 import LiveClock from "./LiveClock.jsx";
 import Compass from "./Compass.jsx";
 
@@ -35,19 +36,15 @@ export default function InfoBox({ current, location, isMetric }) {
   const tempDisplay = `${tempPrimary}${isMetric ? tempUnitMetric : tempUnitImperial}`;
 
   return (
-    <section id="current-container" className="flex flex-col gap-5 p-4 ">
-      <div id="article">
-        <h1 className="text-center m-2.5">
-          <strong> CITY: {location.name}</strong>
-        </h1>
-        <div
-          id="city-container"
-          className="flex flex-row justify-evenly gap-5 "
-        >
-          <div id="city-info" className="flex flex-col justify-center">
+    <section className="info-section">
+      {/* Hero: Location + Clock */}
+      <article className="info-hero">
+        <div>
+          <h1>CITY: {location.name}</h1>
+          <div className="info-hero-info">
             <p>
               Time zone: <br></br>
-              <strong>{location.tz_id}</strong>{" "}
+              <strong>{location.tz_id}</strong>
             </p>
             <p>
               Date: <br></br>
@@ -56,48 +53,46 @@ export default function InfoBox({ current, location, isMetric }) {
               </strong>
             </p>
           </div>
-          <LiveClock tzId={location.tz_id} size={150}></LiveClock>
         </div>
-      </div>
-      <div className="flex flex-row justify-evenly gap-5">
-        <div id="article">
-          <h1 className="text-center m-2.5">
-            <strong>TEMPERATURE</strong>
-          </h1>
-          <div
-            id="current-temp-status"
-            className="flex items-center justify-center gap-2.5 flex-row"
-          >
-            <div>
-              <p>
-                Temperature: <strong>{tempDisplay}</strong>
-              </p>
-              <p>
-                Feel like:<br></br>
+        <LiveClock tzId={location.tz_id} size={150} />
+      </article>
+      {/* Temperature + Wind Cards */}
+      <article className="info-cards-grid">
+        {/* Temperature Card */}
+        <article className="info-card">
+          <h1>TEMPERATURE</h1>
+          <div className="info-card-content">
+            <div className="info-metric-container">
+              <div className="info-metric">
+                <span>Temperature:</span>
+                <strong>{tempDisplay}</strong>
+              </div>
+              <div className="info-metric">
+                <span>Feels like:</span>
                 <strong>
                   {dualDisplay("feelslike_c", "feelslike_f", "°C", "°F")}
                 </strong>
-              </p>
-              <p>
-                Status:
-                <br></br>
+              </div>
+              <div className="info-metric">
+                <span>Status:</span>
                 <strong>{current.condition.text}</strong>
-              </p>
+              </div>
             </div>
-            <img src={current.condition.icon} alt="" />
+            <img
+              className="info-condition-img"
+              src={current.condition.icon}
+              alt={current.condition.text}
+            />
           </div>
-        </div>
-        <div id="article">
-          <h1 className="text-center m-2.5">
-            <strong>WIND</strong>
-          </h1>
-          <div
-            id="wind"
-            className="flex items-center justify-evenly gap-2.5 flex-row"
-          >
-            <div>
-              <p>
-                Wind: <br></br>
+        </article>
+
+        {/* Wind Card */}
+        <article className="info-card">
+          <h1>WIND</h1>
+          <div className="info-card-content">
+            <div className="info-metric-container">
+              <div className="info-metric">
+                <span>Wind:</span>
                 <strong>
                   {dualDisplay(
                     "wind_kph",
@@ -106,9 +101,9 @@ export default function InfoBox({ current, location, isMetric }) {
                     getWindLabel(false),
                   )}
                 </strong>
-              </p>
-              <p>
-                Gust: <br></br>
+              </div>
+              <div className="info-metric">
+                <span>Gust:</span>
                 <strong>
                   {dualDisplay(
                     "gust_kph",
@@ -117,32 +112,33 @@ export default function InfoBox({ current, location, isMetric }) {
                     getWindLabel(false),
                   )}
                 </strong>
-              </p>
-              <p>
-                Direction:<br></br> <strong>{current.wind_dir}</strong>
-              </p>
+              </div>
+              <div className="info-metric">
+                <span>Direction:</span>
+                <strong>{current.wind_dir}</strong>
+              </div>
             </div>
             <Compass windDegree={current.wind_degree} size={150} />
           </div>
-        </div>
-      </div>
-      <div id="article">
-        <h1 className="text-center m-2.5">
-          <strong>WEATHER STATUS</strong>
-        </h1>
-        <div id="other">
-          <p>
-            Humidity:<br></br> <strong>{current.humidity}%</strong>
-          </p>
-          <p>
-            Dewpoint: <br></br>
-            <strong>
+        </article>
+      </article>
+      {/* Weather Status */}
+      <article className="info-stats">
+        <h1 className="info-stats-title">WEATHER STATUS</h1>
+        <ul className="info-stat-list">
+          <li className="info-stat-item">
+            <span className="info-stat-label">Humidity: </span> <br></br>
+            <strong className="info-stat-value">{current.humidity}%</strong>
+          </li>
+          <li className="info-stat-item">
+            <span className="info-stat-label">Dewpoint: </span> <br></br>
+            <strong className="info-stat-value">
               {dualDisplay("dewpoint_c", "dewpoint_f", "°C", "°F")}
             </strong>
-          </p>
-          <p>
-            Vision: <br></br>
-            <strong>
+          </li>
+          <li className="info-stat-item">
+            <span className="info-stat-label">Vision: </span> <br></br>
+            <strong className="info-stat-value">
               {dualDisplay(
                 "vis_km",
                 "vis_miles",
@@ -150,21 +146,23 @@ export default function InfoBox({ current, location, isMetric }) {
                 getVisLabel(false),
               )}
             </strong>
-          </p>
-          <p>
-            Heat: <br></br>
-            <strong>
+          </li>
+          <li className="info-stat-item">
+            <span className="info-stat-label">Heat Index: </span> <br></br>
+            <strong className="info-stat-value">
               {dualDisplay("heatindex_c", "heatindex_f", "°C", "°F")}
             </strong>
-          </p>
-          <p>
-            Cloud:<br></br> <strong>{current.cloud}%</strong>
-          </p>
-          <p>
-            UV:<br></br> <strong>{current.uv}</strong>
-          </p>
-        </div>
-      </div>
+          </li>
+          <li className="info-stat-item">
+            <span className="info-stat-label">Cloud: </span> <br></br>
+            <strong className="info-stat-value">{current.cloud}%</strong>
+          </li>
+          <li className="info-stat-item">
+            <span className="info-stat-label">UV: </span> <br></br>
+            <strong className="info-stat-value">{current.uv}</strong>
+          </li>
+        </ul>
+      </article>
     </section>
   );
 }
