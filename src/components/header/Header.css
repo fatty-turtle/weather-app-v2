@@ -1,45 +1,155 @@
 header {
-  width: 100%;
-  max-width: 100%;
-  padding: 0.75rem 1rem;
   box-sizing: border-box;
-  border-bottom: 1px solid;
+  margin: 1rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--background-card, #ffffff) / 90;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border, #cbd5e1);
+  box-shadow: var(--shadow-glow, 0 0 20px rgba(56, 189, 248, 0.2));
 }
 
+@media (min-width: 640px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+    gap: 1rem;
+  }
+}
+
+/* ── Search bar wrapper — fills remaining space ── */
+header > form,
+header > div:first-child {
+  flex: 1;
+  display: flex;
+}
+
+/* ── Buttons group (ThemeBtn + UnitBtn) ── */
+header > div:last-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* Each button fills equal share of the row on mobile */
+header > div:last-child > * {
+  flex: 1;
+}
+
+@media (min-width: 640px) {
+  header > div:last-child {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  /* Buttons back to natural size on desktop */
+  header > div:last-child > * {
+    flex: none;
+  }
+}
+
+@media (max-width: 448px) {
+  header > div:last-child {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  header > div:last-child > * {
+    width: 100%;
+  }
+
+  /* UnitBtn full width, keep inner row layout for unit btn + tip same line */
+  header > div:last-child > div {
+    width: 100%;
+  }
+
+  /* Tip tooltip always available, positioned relative to tip-indicator */
+  header > div:last-child #tip-box {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: normal;
+    max-width: 200px;
+    text-align: center;
+  }
+}
+
+/* ── Base button ── */
 button {
-  background: var(--btn-bg);
-  color: var(--text-color);
-  border: 1px solid var(--color-text-normal);
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
   height: 40px;
-  border-radius: 10px;
-}
-
-input {
-  background: var(--btn-bg);
-  color: var(--text-color);
-  border: 1px solid var(--color-text-normal);
   padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  height: 40px;
-  border-radius: 10px;
+  white-space: nowrap;
+  border-radius: 1rem;
+  border: 1.5px solid var(--border, #cbd5e1);
+  background: var(--background-secondary, #ffffff);
+  color: var(--text-normal);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
 }
 
 button:hover {
-  background: var(--btn-hover-bg);
-  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  background: var(--btn-hover-bg, var(--background-card, #f1f5f9));
 }
 
+button:active {
+  transform: scale(0.97);
+}
+
+/* ── Input ── */
+input {
+  height: 40px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: text;
+  border-radius: 1rem;
+  border: 1.5px solid var(--border, #cbd5e1);
+  background: var(--color-background-secondary, #ffffff);
+  color: var(--text-normal);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--primary, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+input::placeholder {
+  color: var(--text-lowlight, #94a3b8);
+}
+
+/* ── Tip indicator (small circle btn) ── */
 #tip-indicator {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
+  min-width: 25px;
   padding: 0;
   border-radius: 50%;
   font-size: 11px;
+  font-weight: 700;
   position: relative;
   z-index: 1;
+  box-shadow: var(--border);
 }

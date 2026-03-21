@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
-import Footer from "./components/footer/Footer";
 import fetchApi from "./utils/fetchApi";
 
 export default function WeatherApp() {
@@ -53,7 +52,6 @@ export default function WeatherApp() {
         error={error}
         isMetric={isMetric}
       />
-      <Footer />
     </>
   );
 }

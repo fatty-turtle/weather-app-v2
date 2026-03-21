@@ -72,7 +72,7 @@ export default function Forecast({ forecast, isMetric = true }) {
   if (forecastDays.length === 0) {
     return (
       <section className="empty-section">
-        <h2 className="empty-title">Hourly Forecast</h2>
+        <h1 className="empty-title">Hourly Forecast</h1>
         <p className="empty-text">No forecast data available</p>
       </section>
     );
@@ -98,7 +98,7 @@ export default function Forecast({ forecast, isMetric = true }) {
 
   return (
     <section className="forecast-section">
-      <h2 className="forecast-title">Hourly Forecast</h2>
+      <h2 className="forecast-title">HOURLY FORECAST</h2>
 
       {/* Navbar */}
       <nav className="forecast-navbar">
