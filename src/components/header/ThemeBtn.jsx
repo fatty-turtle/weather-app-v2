@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 
 export default function ThemeBtn() {
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    setTheme(savedTheme);
-    document.documentElement.className = savedTheme === "dark" ? "dark" : "";
-  }, []);
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem("theme") || "light";
+    document.documentElement.className = saved === "dark" ? "dark" : "";
+    return saved;
+  });
 
   useEffect(() => {
     localStorage.setItem("theme", theme);

@@ -1,35 +1,28 @@
 import { useState } from "react";
 
 export default function UnitBtn({ isMetric, onToggle }) {
-  const toggleUnit = () => {
-    onToggle(!isMetric);
-  };
   const [tip, setTip] = useState(false);
 
-  const toggleTip = () => {
-    if (tip === false) setTip(true);
-    else setTip(false);
-  };
   return (
     <div>
-      <div className="flex gap-0.5 relative">
+      <div className="flex gap-0.5">
         <button
-          onClick={toggleUnit}
+          onClick={() => onToggle(!isMetric)}
           id="unit-btn"
           aria-label={`Switch to ${isMetric ? "imperial" : "metric"} units`}
-          className="flex-1 "
+          className="flex-1"
         >
           Convert Unit
         </button>
 
-        <button id="tip-indicator" onClick={toggleTip}>
+        <button id="tip-indicator" onClick={() => setTip((t) => !t)}>
           ?
         </button>
       </div>
       {tip && (
         <div
           id="tip-box"
-          className="absolute right-4 mt-1 bg-background border border-dotted border-text-normal rounded-2xl shadow-md px-3 py-2 text-sm z-10 whitespace-nowrap"
+          className="absolute min-w-48 right-0 top-full mt-1 bg-background border border-dotted border-text-normal rounded-2xl shadow-md px-3 py-2 text-sm whitespace-nowrap z-[200]"
         >
           Convert Units (C/F, mph/kph, km/miles)
         </div>

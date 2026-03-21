@@ -30,3 +30,14 @@ p {
 #other p {
   padding-left: 30px;
 }
+
+.no-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  font-size: clamp(30px, 40px, 100%);
+  font-weight: 700;
+  color: var(--text-highlight);
+}
