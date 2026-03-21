@@ -4,29 +4,37 @@ import InfoBox from "./info-box/InfoBox";
 
 import "./Main.css";
 
-export default function Main({ weatherData, loading, error, isMetric }) {
-  if (loading)
-    return (
-      <main>
-        <div className="loading">Loading weather...</div>
-      </main>
-    );
-  if (!weatherData)
-    return (
-      <main>
-        <div>Enter a city and search to see weather</div>
-      </main>
-    );
-
+export default function Main({
+  weatherData,
+  loading,
+  error,
+  isMetric,
+  status,
+}) {
   return (
     <main>
-      <AppStatus error={error}></AppStatus>
-      <InfoBox
-        current={weatherData.current}
-        location={weatherData.location}
-        isMetric={isMetric}
-      ></InfoBox>
-      <Forecast forecast={weatherData.forecast} isMetric={isMetric}></Forecast>
+      <AppStatus loading={loading} error={error} status={status} />
+
+      {error && !weatherData && (
+        <div className="no-data text-center py-8 text-gray-500">
+          {error.includes("enter") ? null : "Enter a city to see weather"}
+        </div>
+      )}
+      {!loading && !error && !weatherData && (
+        <div className="no-data text-center py-8 text-gray-500">
+          Enter a city and search to see weather...
+        </div>
+      )}
+      {!loading && !error && weatherData && (
+        <>
+          <InfoBox
+            current={weatherData.current}
+            location={weatherData.location}
+            isMetric={isMetric}
+          />
+          <Forecast forecast={weatherData.forecast} isMetric={isMetric} />
+        </>
+      )}
     </main>
   );
 }
