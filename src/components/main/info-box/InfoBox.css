@@ -45,6 +45,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   gap: 1rem;
   text-align: center;
   transition: all 0.3s ease;
@@ -57,10 +58,11 @@
 @media (min-width: 768px) {
   .info-hero {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    gap: 2rem;
     text-align: left;
-    padding: 2rem;
+    padding: 2rem 2.5rem;
   }
 }
 

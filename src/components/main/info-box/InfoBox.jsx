@@ -1,6 +1,7 @@
 import "./InfoBox.css";
 import LiveClock from "./LiveClock.jsx";
 import Compass from "./Compass.jsx";
+import Map from "./Map.jsx";
 
 import {
   getTempLabel,
@@ -54,7 +55,18 @@ export default function InfoBox({ current, location, isMetric }) {
             </p>
           </div>
         </div>
-        <LiveClock tzId={location.tz_id} size={150} />
+        <div className="flex flex-col items-center gap-4 lg:flex-row">
+          <h1>
+            <strong>Location:</strong>
+          </h1>
+          <Map location={location} size={150} />
+        </div>
+        <div className="flex flex-col items-center gap-4 lg:flex-row">
+          <h1>
+            <strong>Time:</strong>
+          </h1>
+          <LiveClock tzId={location.tz_id} size={150} />
+        </div>
       </article>
       {/* Temperature + Wind Cards */}
       <article className="info-cards-grid">
