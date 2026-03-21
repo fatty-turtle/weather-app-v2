@@ -1,4 +1,3 @@
-/* Live Clock Styles */
 .live-clock {
   display: inline-block;
   width: clamp(120px, 20vw, 180px);

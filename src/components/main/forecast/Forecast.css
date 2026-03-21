@@ -33,7 +33,6 @@
   }
 }
 
-/* ── Navbar ── */
 .forecast-navbar {
   display: flex;
   flex-direction: column;
@@ -41,7 +40,6 @@
   margin-bottom: 2rem;
 }
 
-/* Day buttons — centered on mobile, scrollable */
 .forecast-day-btns {
   display: flex;
   align-items: center;
@@ -57,7 +55,6 @@
   display: none;
 }
 
-/* Chart toggle row — full width segment on mobile */
 .forecast-chart-toggle-row {
   display: flex;
   justify-content: center;
@@ -69,7 +66,6 @@
   justify-content: center;
 }
 
-/* Desktop: single row, day btns left, chart btn right */
 @media (min-width: 768px) {
   .forecast-navbar {
     flex-direction: row;
@@ -160,7 +156,6 @@
   }
 }
 
-/* Chart toggle button — right side */
 .forecast-view-toggle {
   flex-shrink: 0;
   display: flex;
@@ -209,7 +204,6 @@
   }
 }
 
-/* ── Cards scrollable row ── */
 .forecast-container {
   display: flex;
   flex-direction: row;
@@ -228,7 +222,6 @@
   scrollbar-width: thin;
   scrollbar-color: var(--border, #cbd5e1) transparent;
   scroll-padding-left: 1rem;
-  /* prevent border-radius from clipping card hover/scale */
   isolation: isolate;
 }
 
@@ -240,7 +233,6 @@
   }
 }
 
-/* First and last card carry the horizontal padding */
 .forecast-card:first-child {
   margin-left: 1rem;
 }
@@ -281,7 +273,6 @@
   background: var(--background-card, #020617) / 90;
 }
 
-/* Mobile: small fixed size */
 .forecast-card {
   display: flex;
   flex-direction: column;
@@ -378,7 +369,6 @@
   }
 }
 
-/* ── Chart container ── */
 .forecast-chart-container {
   padding: 1.5rem 1rem;
   background: var(--background-card, #ffffff) / 80;
@@ -399,7 +389,6 @@
   background: var(--background-card, #020617) / 90;
 }
 
-/* ── Empty state ── */
 .empty-section {
   padding: 2rem;
   text-align: center;

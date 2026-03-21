@@ -10,7 +10,7 @@ export default function AppStatus({ loading, error, status }) {
       setVisible(true);
     } else if (error) {
       let displayMsg = error;
-      // Enhance specific messages if needed (already handled in App.jsx)
+
       if (error.includes("Please enter")) {
         displayMsg = "Please enter a city name.";
       } else if (error.includes("Invalid")) {

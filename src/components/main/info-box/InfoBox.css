@@ -33,7 +33,6 @@
   }
 }
 
-/* Hero: Location + Clock */
 .info-hero {
   background: var(--background-card, #ffffff) / 0.8;
   backdrop-filter: blur(24px);
@@ -89,7 +88,6 @@
   background: var(--background-card, #020617) / 90;
 }
 
-/* Dual Cards Grid: Temp + Wind */
 .info-cards-grid {
   display: flex;
   flex-direction: column;
@@ -198,7 +196,6 @@
   }
 }
 
-/* Weather Status List */
 .info-stats {
   background: var(--background-card, #ffffff) / 0.8;
   backdrop-filter: blur(24px);

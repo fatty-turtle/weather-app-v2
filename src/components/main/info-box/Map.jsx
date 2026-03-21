@@ -3,7 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "./Map.css";
 
-// Fix default leaflet marker icon issue with vite/react
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -31,8 +30,8 @@ export default function Map({ location, size = "clamp(160px, 20vw, 220px)" }) {
         className="map-placeholder"
         style={{ width: size * 1.33, height: size }}
       >
-        <div className="placeholder-content">
-          📍
+        <div className="placeholder-content text-error">
+          &#xf041;
           <br />
           <small>Location unavailable</small>
         </div>

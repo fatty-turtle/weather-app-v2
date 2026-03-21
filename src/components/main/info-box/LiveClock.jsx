@@ -151,7 +151,7 @@ export default function LiveClock({ tzId, size }) {
           className="hand hand-minute"
         />
 
-        {/* Second hand + counterweight */}
+        {/* Second hand & counterweight */}
         <rect
           {...hand(angles.second, cx - 0.75, cy - 68, 1.5, 68, 0.75)}
           className="hand hand-second"

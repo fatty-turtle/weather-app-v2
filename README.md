@@ -1,105 +1,132 @@
-# Weather App
+# Weather App v2
 
-A modern, responsive weather application built with React and Vite. Get real-time weather data, forecasts, and detailed weather information for any city worldwide.
+[![React](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7-orange.svg)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-green.svg)](https://tailwindcss.com/)
 
-## Features
+A modern, responsive weather application built with React and Vite. Get real-time weather data, forecasts, detailed info (compass, map, live clock), and more for any city worldwide.
 
-- **Real-time Weather Data**: Current temperature, conditions, humidity, wind speed, and more
-- **7-Day Forecast**: Hourly and daily weather predictions with interactive charts
-- **Unit Conversion**: Toggle between Celsius and Fahrenheit
-- **Interactive Wind Compass**: Visual wind direction indicator
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **Error Handling**: Graceful error boundaries and user-friendly error messages
-- **Loading States**: Smooth skeleton loading animations
+## ✨ Features
 
-## Technologies Used
+- **Real-time Weather Data**: Current temperature, feels-like, conditions, humidity, wind speed, pressure, UV, visibility
+- **3-Day Forecast**: Detailed hourly and daily predictions with Recharts visualizations
+- **Unit Toggle**: Seamless °C ↔ °F conversion
+- **Interactive Components**: Wind Compass (SVG), Live Clock, Interactive Map (Leaflet)
+- **Smart Header**: Search by city, Theme toggle (dark/light), Units button
+- **Responsive Design**: Optimized for desktop, tablet, mobile
+- **Robust Error Handling**: React Error Boundary with fallback UI
+- **Smooth UX**: Skeleton loading states, optimistic updates
 
-- **React 19** - Modern React with hooks and functional components
-- **Vite** - Fast development and optimized builds
-- **Axios** - HTTP client with request/response interceptors
-- **Recharts** - Interactive data visualization for forecasts
-- **WeatherAPI** - Real-time weather data provider
-- **React Error Boundary** - Error handling and recovery
-- **React Loading Skeleton** - Loading state UI components
+## 🛠️ Technologies Used
 
-## Project Structure
+| Technology                 | Purpose          | Version                          |
+| -------------------------- | ---------------- | -------------------------------- |
+| **React**                  | UI Library       | 19.x                             |
+| **Vite**                   | Build Tool       | 7.x                              |
+| **Tailwind CSS**           | Styling          | 4.x                              |
+| **Axios**                  | API Requests     | 1.x (in `src/utils/fetchApi.js`) |
+| **Recharts**               | Charts/Forecasts | 3.x                              |
+| **React Leaflet**          | Interactive Maps | Latest                           |
+| **WeatherAPI**             | Weather Data     | Free Tier                        |
+| **React Error Boundary**   | Error Recovery   | 6.x                              |
+| **React Loading Skeleton** | Loading UI       | 3.x                              |
+| **ESLint**                 | Code Quality     | 9.x                              |
+
+## 📁 Project Structure
 
 ```
-weather-app/
-├── public/                 # Static assets
+d:/Projects/weather-app-v2/
+├── public/
+│   └── wind-solid-full.svg      # Compass icon
 ├── src/
-│   ├── api/               # API configuration
-│   │   └── axiosConfig.js   # Axios instance with interceptors
-│   ├── components/        # React components
-│   │   ├── TempBox.jsx    # Temperature display component
-│   │   ├── InfoBox.jsx    # Weather details (General/Wind tabs)
-│   │   ├── Forecast.jsx   # Hourly and daily forecast
-│   │   ├── Skeletons.jsx  # Loading skeleton components
-│   │   └── ErrorBoundary.jsx # Error handling wrapper
-│   ├── App.jsx            # Main application component
-│   ├── main.jsx           # Application entry point
-│   └── index.css          # Global styles
-├── package.json           # Dependencies and scripts
-└── README.md             # Project documentation
+│   ├── components/
+│   │   ├── header/              # App header
+│   │   │   ├── Header.jsx
+│   │   │   ├── SearchBar.jsx
+│   │   │   ├── ThemeBtn.jsx
+│   │   │   └── UnitBtn.jsx
+│   │   └── main/
+│   │       ├── AppStatus.jsx
+│   │       ├── Main.jsx
+│   │       └── forecast/
+│   │           └── Forecast.jsx
+│   │       └── info-box/
+│   │           ├── InfoBox.jsx
+│   │           ├── Compass.jsx
+│   │           ├── LiveClock.jsx
+│   │           └── Map.jsx
+│   ├── utils/
+│   │   ├── fetchApi.js          # Axios wrapper
+│   │   ├── unitConverter.js
+│   │   └── unitUtils.js
+│   ├── App.jsx
+│   ├── App.css
+│   ├── main.jsx
+│   └── index.css
+├── package.json                 # React 19, deps
+├── tailwind.config.js
+├── vite.config.js
+├── eslint.config.js
+└── README.md
 ```
 
-## Setup Instructions
+## 🚀 Setup Instructions
 
 ### Prerequisites
 
-- Node.js (version 18 or higher)
-- npm or yarn package manager
+- Node.js ≥18
+- npm/yarn/pnpm
 
-### Installation
-
-1. **Clone or download the project**
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Set up environment variables (Optional but recommended)**
-
-   Create a `.env` file in the root directory:
-
-   ```env
-   VITE_WEATHER_API_KEY=your_api_key_here
-   ```
-
-4. **Start the development server**
-
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser**
-
-   Navigate to `http://localhost:5173` (or the port shown in your terminal)
-
-### Build for Production
+### Quick Start
 
 ```bash
-npm run build
+git clone https://github.com/yourusername/weather-app-v2.git  # or download
+cd weather-app-v2
+npm install
 ```
 
-The built files will be in the `dist/` directory.
+**API Key** (recommended): Create `.env`:
 
-### Available Scripts
+```env
+VITE_WEATHER_API_KEY=your_key_from_weatherapi.com
+```
 
-| Command           | Description                              |
-| ----------------- | ---------------------------------------- |
-| `npm run dev`     | Start development server with hot reload |
-| `npm run build`   | Build for production                     |
-| `npm run preview` | Preview production build locally         |
-| `npm run lint`    | Run ESLint for code quality              |
+```bash
+npm run dev
+```
 
-## API Information
+Open [http://localhost:5173](http://localhost:5173) 🎉
 
-This application uses the [WeatherAPI](https://www.weatherapi.com/) free tier which provides:
+### Build & Deploy
 
-- Real-time weather data
-- 7-day weather forecast
-- Location search
-- Up to 1 million calls per month (free tier)
+```bash
+npm run build      # dist/ folder
+npm run preview    # Local prod preview
+npm run lint       # Check code
+```
+
+## 📋 Available Scripts
+
+| Script            | Description             |
+| ----------------- | ----------------------- |
+| `npm run dev`     | Dev server (hot reload) |
+| `npm run build`   | Production build        |
+| `npm run preview` | Preview build           |
+| `npm run lint`    | Lint code               |
+
+## 🌐 API: WeatherAPI.com
+
+- [Free Signup](https://www.weatherapi.com/register.aspx)
+- Endpoints: Current, Forecast, Location search
+- 100,000 calls/month free
+- Key via `VITE_WEATHER_API_KEY`
+
+## 📱 Demo / Screenshots
+
+Run `npm run dev` to see live. Features responsive design with dark/light theme.
+
+## 🤝 Contributing
+
+1. Fork & PR
+2. `npm install && npm run lint`
+3. Add tests if applicable
