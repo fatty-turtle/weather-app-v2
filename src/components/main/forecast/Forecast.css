@@ -33,155 +33,68 @@
   }
 }
 
-/* Scrollable horizontal row on ALL resolutions */
-.forecast-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: var(--background-card, #ffffff) / 80;
-  backdrop-filter: blur(24px);
-  border-radius: 1.5rem;
-  border: 1px solid var(--border, #cbd5e1) / 0.5;
-  box-shadow: var(--shadow-glow, 0 0 20px rgba(56, 189, 248, 0.2));
-
-  /* Horizontal scroll */
-  overflow-x: auto;
-  overflow-y: visible;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  /* Scrollbar styling */
-  scrollbar-width: thin;
-  scrollbar-color: var(--border, #cbd5e1) transparent;
-}
-
-.forecast-container::-webkit-scrollbar {
-  height: 6px;
-}
-
-.forecast-container::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 3px;
-}
-
-.forecast-container::-webkit-scrollbar-thumb {
-  background: var(--border, #cbd5e1);
-  border-radius: 3px;
-}
-
-.forecast-container::-webkit-scrollbar-thumb:hover {
-  background: var(--text-lowlight, #94a3b8);
-}
-
-.dark .forecast-container {
-  background: var(--background-card, #020617) / 90;
-}
-
-/* Cards — vertical layout, fixed width, snap */
-.forecast-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  min-height: 160px;
-  flex: 0 0 120px; 
-  border-radius: 1rem;
-  border: 1px solid var(--border, #cbd5e1) / 0.3;
-  box-shadow: var(--shadow-md);
-  background: var(--background, #f8fafc) / 0.6;
-  backdrop-filter: blur(16px);
-  transition: all 0.3s ease;
-  scroll-snap-align: start;
-  gap: 0.25rem;
-}
-
-/* Desktop: larger fixed size */
-@media (min-width: 768px) {
-  .forecast-card {
-    flex: 0 0 160px;
-    width: 150px;
-    min-height: 190px;
-    padding: 1.25rem 1rem;
-    gap: 0.35rem;
-  }
-}
-
-.forecast-card:hover {
-  box-shadow: var(--shadow-glow);
-  transform: scale(1.04);
-}
-
-.dark .forecast-card {
-  background: var(--background-secondary, #1e293b) / 0.7;
-}
-
-@media (max-width: 640){
-  .forecast-card{
-    width: 100px;
-    height: 200px;
-  }
-}
-.forecast-card h3 {
-  margin-bottom: 0.25rem;
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--text-normal);
-}
-
-.forecast-card img {
-  width: 3.5rem;
-  height: 3.5rem;
-  margin: 0.25rem auto;
-  object-fit: contain;
-}
-
-.forecast-card .condition-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.5rem;
-  padding: 0 0.5rem;
-  font-size: 0.7rem;
-  text-align: center;
-  color: var(--text-lowlight);
-}
-
-.forecast-card .temp {
-  font-size: 1.25rem;
-  font-weight: 900;
-  color: var(--text-highlight);
-  margin-top: 0.25rem;
-}
-
-/* Empty state */
-.empty-section {
-  padding: 2rem;
-  text-align: center;
-}
-
-.empty-title {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--text-normal);
-}
-
-.empty-text {
-  color: var(--text-lowlight);
-}
-
-/* Forecast Day Navbar */
+/* ── Navbar ── */
 .forecast-navbar {
   display: flex;
+  flex-direction: column;
   gap: 0.75rem;
   margin-bottom: 2rem;
+}
+
+/* Day buttons — centered on mobile, scrollable */
+.forecast-day-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
   overflow-x: auto;
-  padding-bottom: 0.75rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+
+.forecast-day-btns::-webkit-scrollbar {
+  display: none;
+}
+
+/* Chart toggle row — full width segment on mobile */
+.forecast-chart-toggle-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.forecast-chart-toggle-row .forecast-view-toggle {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Desktop: single row, day btns left, chart btn right */
+@media (min-width: 768px) {
+  .forecast-navbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    overflow: visible;
+  }
+
+  .forecast-day-btns {
+    justify-content: flex-start;
+    overflow: visible;
+    gap: 1rem;
+    flex: 1;
+    padding-bottom: 0;
+  }
+
+  .forecast-chart-toggle-row {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .forecast-chart-toggle-row .forecast-view-toggle {
+    width: auto;
+  }
 }
 
 .forecast-navbar::-webkit-scrollbar {
@@ -206,6 +119,7 @@
   backdrop-filter: blur(16px);
   border: 1.5px solid var(--border, #cbd5e1) / 0.5;
   border-radius: 1rem;
+  padding: 0.4rem 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -240,13 +154,241 @@
 }
 
 @media (min-width: 768px) {
-  .forecast-navbar {
-    overflow: visible;
-    justify-content: center;
-    gap: 1rem;
-  }
-
   .forecast-day-btn {
     font-size: 1rem;
+    padding: 0.5rem 1.1rem;
   }
+}
+
+/* Chart toggle button — right side */
+.forecast-view-toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-normal);
+  background: var(--background-card, #ffffff) / 0.6;
+  backdrop-filter: blur(16px);
+  border: 1.5px solid var(--border, #cbd5e1) / 0.5;
+  border-radius: 1rem;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.forecast-view-toggle:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.forecast-view-toggle.active {
+  background: var(--primary, #3b82f6);
+  color: white;
+  border-color: var(--primary, #3b82f6);
+  box-shadow: var(--shadow-glow);
+}
+
+.dark .forecast-view-toggle {
+  background: var(--background-secondary, #1e293b) / 0.8;
+  border-color: var(--border-dark, #475569) / 0.6;
+}
+
+.dark .forecast-view-toggle.active {
+  background: var(--primary, #3b82f6);
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .forecast-view-toggle {
+    font-size: 1rem;
+    padding: 0.5rem 1.1rem;
+  }
+}
+
+/* ── Cards scrollable row ── */
+.forecast-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--background-card, #ffffff) / 80;
+  backdrop-filter: blur(24px);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border, #cbd5e1) / 0.5;
+  box-shadow: var(--shadow-glow, 0 0 20px rgba(56, 189, 248, 0.2));
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border, #cbd5e1) transparent;
+}
+
+@media (min-width: 768px) {
+  .forecast-container {
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+.forecast-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.forecast-container::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
+  background: var(--border, #cbd5e1);
+  border-radius: 3px;
+}
+
+.forecast-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-lowlight, #94a3b8);
+}
+
+.dark .forecast-container {
+  background: var(--background-card, #020617) / 90;
+}
+
+/* Mobile: small fixed size */
+.forecast-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  scroll-snap-align: start;
+  flex: 0 0 90px;
+  width: 90px;
+  min-height: 130px;
+  padding: 0.6rem 0.4rem;
+  border-radius: 0.875rem;
+  border: 1px solid var(--border, #cbd5e1) / 0.3;
+  box-shadow: var(--shadow-md);
+  background: var(--background, #f8fafc) / 0.6;
+  backdrop-filter: blur(16px);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .forecast-card {
+    flex: 0 0 150px;
+    width: 150px;
+    min-height: 190px;
+    padding: 1.25rem 1rem;
+    gap: 0.35rem;
+  }
+}
+
+.forecast-card:hover {
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.04);
+}
+
+.dark .forecast-card {
+  background: var(--background-secondary, #1e293b) / 0.7;
+}
+
+.forecast-card h3 {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--text-normal);
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .forecast-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.forecast-card img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .forecast-card img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+.forecast-card .condition-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0 0.2rem;
+  font-size: 0.6rem;
+  text-align: center;
+  color: var(--text-lowlight);
+}
+
+@media (min-width: 768px) {
+  .forecast-card .condition-text {
+    font-size: 0.85rem;
+    min-height: 2.5rem;
+    padding: 0 0.5rem;
+  }
+}
+
+.forecast-card .temp {
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--text-highlight);
+}
+
+@media (min-width: 768px) {
+  .forecast-card .temp {
+    font-size: 1.5rem;
+  }
+}
+
+/* ── Chart container ── */
+.forecast-chart-container {
+  padding: 1.5rem 1rem;
+  background: var(--background-card, #ffffff) / 80;
+  backdrop-filter: blur(24px);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border, #cbd5e1) / 0.5;
+  box-shadow: var(--shadow-glow, 0 0 20px rgba(56, 189, 248, 0.2));
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .forecast-chart-container {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.dark .forecast-chart-container {
+  background: var(--background-card, #020617) / 90;
+}
+
+/* ── Empty state ── */
+.empty-section {
+  padding: 2rem;
+  text-align: center;
+}
+
+.empty-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-normal);
+}
+
+.empty-text {
+  color: var(--text-lowlight);
 }
