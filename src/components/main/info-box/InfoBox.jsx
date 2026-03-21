@@ -93,7 +93,7 @@ export default function InfoBox({ current, location, isMetric }) {
           </h1>
           <div
             id="wind"
-            className="flex items-center justify-center gap-2.5 flex-row"
+            className="flex items-center justify-evenly gap-2.5 flex-row"
           >
             <div>
               <p>

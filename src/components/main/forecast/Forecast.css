@@ -33,10 +33,11 @@
   }
 }
 
+/* Scrollable horizontal row on ALL resolutions */
 .forecast-container {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 1rem;
   padding: 1.5rem;
   background: var(--background-card, #ffffff) / 80;
@@ -44,112 +45,97 @@
   border-radius: 1.5rem;
   border: 1px solid var(--border, #cbd5e1) / 0.5;
   box-shadow: var(--shadow-glow, 0 0 20px rgba(56, 189, 248, 0.2));
+
+  /* Horizontal scroll */
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* Scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border, #cbd5e1) transparent;
+}
+
+.forecast-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.forecast-container::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.forecast-container::-webkit-scrollbar-thumb {
+  background: var(--border, #cbd5e1);
+  border-radius: 3px;
+}
+
+.forecast-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-lowlight, #94a3b8);
 }
 
 .dark .forecast-container {
   background: var(--background-card, #020617) / 90;
 }
 
-@media (min-width: 768px) {
-  .forecast-container {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    overflow: visible;
-    max-width: 80rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2.5rem;
-    box-shadow: var(--shadow-2xl);
-  }
-}
-
-@media (min-width: 1024px) {
-  .forecast-container {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
+/* Cards — vertical layout, fixed width, snap */
 .forecast-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  min-height: 50px;
+  min-height: 160px;
+  flex: 0 0 120px; 
   border-radius: 1rem;
   border: 1px solid var(--border, #cbd5e1) / 0.3;
   box-shadow: var(--shadow-md);
   background: var(--background, #f8fafc) / 0.6;
   backdrop-filter: blur(16px);
   transition: all 0.3s ease;
-  min-width: 140px;
+  scroll-snap-align: start;
+  gap: 0.25rem;
+}
+
+/* Desktop: larger fixed size */
+@media (min-width: 768px) {
+  .forecast-card {
+    flex: 0 0 160px;
+    width: 150px;
+    min-height: 190px;
+    padding: 1.25rem 1rem;
+    gap: 0.35rem;
+  }
 }
 
 .forecast-card:hover {
   box-shadow: var(--shadow-glow);
-  transform: scale(1.02);
+  transform: scale(1.04);
 }
 
 .dark .forecast-card {
   background: var(--background-secondary, #1e293b) / 0.7;
 }
 
-@media (min-width: 640px) {
-  .forecast-card {
-    padding: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .forecast-card {
-    padding: 1.25rem;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .forecast-card:hover {
-    transform: scale(1);
-  }
-}
-@media (max-width: 768px) {
-  .forecast-card {
-    flex-direction: row;
+@media (max-width: 640){
+  .forecast-card{
+    width: 100px;
+    height: 200px;
   }
 }
 .forecast-card h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--text-normal);
-}
-
-@media (min-width: 640px) {
-  .forecast-card h3 {
-    margin-bottom: 0.75rem;
-    font-size: 1.25rem;
-  }
 }
 
 .forecast-card img {
   width: 3.5rem;
   height: 3.5rem;
-  margin: 0 auto 0.75rem;
+  margin: 0.25rem auto;
   object-fit: contain;
-}
-
-@media (min-width: 640px) {
-  .forecast-card img {
-    width: 4rem;
-    height: 4rem;
-    margin-bottom: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .forecast-card img {
-    width: 5rem;
-    height: 5rem;
-  }
 }
 
 .forecast-card .condition-text {
@@ -157,59 +143,20 @@
   align-items: center;
   justify-content: center;
   min-height: 2.5rem;
-  margin-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  font-size: 0.75rem;
+  padding: 0 0.5rem;
+  font-size: 0.7rem;
   text-align: center;
   color: var(--text-lowlight);
-  min-width: 130px;
-}
-
-@media (min-width: 768px) {
-  .forecast-card .condition-text {
-    font-size: 1rem;
-    min-width: 50px;
-    min-width: 130px;
-  }
-}
-
-@media (min-width: 640px) {
-  .forecast-card .condition-text {
-    font-size: 0.875rem;
-    min-width: 60px;
-  }
-}
-@media (max-width: 330px) {
-  .forecast-card .condition-text {
-    min-width: 0;
-  }
 }
 
 .forecast-card .temp {
   font-size: 1.25rem;
   font-weight: 900;
   color: var(--text-highlight);
+  margin-top: 0.25rem;
 }
 
-@media (min-width: 640px) {
-  .forecast-card .temp {
-    font-size: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .forecast-card .temp {
-    font-size: 1.875rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .forecast-card .temp {
-    font-size: 1.5rem;
-  }
-}
-
+/* Empty state */
 .empty-section {
   padding: 2rem;
   text-align: center;
@@ -224,4 +171,82 @@
 
 .empty-text {
   color: var(--text-lowlight);
+}
+
+/* Forecast Day Navbar */
+.forecast-navbar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.forecast-navbar::-webkit-scrollbar {
+  height: 6px;
+}
+
+.forecast-navbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.forecast-navbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.forecast-day-btn {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-normal);
+  background: var(--background-card, #ffffff) / 0.6;
+  backdrop-filter: blur(16px);
+  border: 1.5px solid var(--border, #cbd5e1) / 0.5;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.forecast-day-btn:hover {
+  background: var(--background-card, #ffffff) / 0.8;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.forecast-day-btn.active {
+  background: var(--primary, #3b82f6);
+  color: white;
+  border-color: var(--primary, #3b82f6);
+  box-shadow: var(--shadow-glow);
+}
+
+.dark .forecast-day-btn {
+  background: var(--background-secondary, #1e293b) / 0.8;
+  border-color: var(--border-dark, #475569) / 0.6;
+}
+
+.dark .forecast-day-btn:hover {
+  background: var(--background-secondary, #1e293b) / 1;
+}
+
+.dark .forecast-day-btn.active {
+  background: var(--primary, #3b82f6);
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .forecast-navbar {
+    overflow: visible;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .forecast-day-btn {
+    font-size: 1rem;
+  }
 }
