@@ -26,7 +26,7 @@ export default function Main({ weatherData, loading, error, isMetric }) {
         location={weatherData.location}
         isMetric={isMetric}
       ></InfoBox>
-      <Forecast forecast={weatherData.forecast}></Forecast>
+      <Forecast forecast={weatherData.forecast} isMetric={isMetric}></Forecast>
     </main>
   );
 }

@@ -26,7 +26,7 @@ export default function WeatherApp() {
     setError(null);
     try {
       const result = await fetchApi(
-        `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${city}`,
+        `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${city}&days=3&aqi=no&alerts=no`,
       );
       setWeatherData(result.data);
     } catch (err) {
