@@ -36,7 +36,7 @@ export default function AppStatus({ loading, error, status }) {
 
   return (
     <section className="info-section">
-      <div className="bg-white/80 backdrop-blur-md border border-gray-200 rounded-xl shadow-xl p-6 flex flex-col items-center animate-in slide-in-from-top-2 duration-300">
+      <div className="bg-background-secondary backdrop-blur-md border border-border rounded-xl shadow-xl p-6 flex flex-col items-center animate-in slide-in-from-top-2 duration-300">
         <div
           className={`flex items-center gap-3 text-xl font-bold ${isError ? "text-error" : "text-text-highlight"} mb-3`}
         >

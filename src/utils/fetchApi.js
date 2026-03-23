@@ -11,7 +11,6 @@ export const fetchApi = async (url, config = {}) => {
     const { data } = await axios(url, config);
     return { data, error: null };
   } catch (error) {
-    console.error("API error:", error);
     return {
       data: null,
       error: error.response?.data?.message || error.message,

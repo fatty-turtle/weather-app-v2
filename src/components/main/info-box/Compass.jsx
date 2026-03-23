@@ -118,7 +118,7 @@ export default function Compass({ windDegree = 0, size = 100 }) {
           />
         </g>
 
-        {/* Center pivot (matches LiveClock) */}
+        {/* Center pivot */}
         <circle cx={cx} cy={cy} r="5" fill="var(--text-highlight)" />
         <circle cx={cx} cy={cy} r="2" fill="var(--background-card)" />
       </svg>
