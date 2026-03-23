@@ -3,29 +3,21 @@ import LiveClock from "./LiveClock.jsx";
 import Compass from "./Compass.jsx";
 import Map from "./Map.jsx";
 
-import {
-  getTempLabel,
-  getWindLabel,
-  getVisLabel,
-} from "../../../utils/unitConverter.js";
+import { getWindLabel, getVisLabel } from "../../../utils/unitConverter.js";
 
 export default function InfoBox({ current, location, isMetric }) {
   const date = location.localtime.slice(0, 10);
   const hour = parseInt(location.localtime.slice(11, 13));
   const ampm = hour >= 12 ? "PM" : "AM";
 
-  // Clean dual display: primary (current unit) ↔ exchange (other unit)
   const dualDisplay = (metricKey, imperialKey, metricLabel, imperialLabel) => {
     const metricVal = Math.round(current[metricKey] * 10) / 10;
     const imperialVal = Math.round(current[imperialKey] * 10) / 10;
     const primaryVal = isMetric ? metricVal : imperialVal;
-    const exchangeVal = isMetric ? imperialVal : metricVal;
     const primaryLabel = isMetric ? metricLabel : imperialLabel;
-    const exchangeLabel = isMetric ? imperialLabel : metricLabel;
     return `${primaryVal}${primaryLabel}`;
   };
 
-  // Temp uses getTempLabel logic
   const tempUnitMetric = "°C";
   const tempUnitImperial = "°F";
   const tempPrimary = isMetric
@@ -38,7 +30,7 @@ export default function InfoBox({ current, location, isMetric }) {
 
   return (
     <section className="info-section">
-      {/* Hero: Location + Clock */}
+      {/* City info */}
       <article className="info-hero">
         <div>
           <h1>CITY: {location.name}</h1>
@@ -68,9 +60,8 @@ export default function InfoBox({ current, location, isMetric }) {
           <LiveClock tzId={location.tz_id} size={150} />
         </div>
       </article>
-      {/* Temperature + Wind Cards */}
+      {/* Temp card */}
       <article className="info-cards-grid">
-        {/* Temperature Card */}
         <article className="info-card">
           <h1>TEMPERATURE</h1>
           <div className="info-card-content">
@@ -98,7 +89,7 @@ export default function InfoBox({ current, location, isMetric }) {
           </div>
         </article>
 
-        {/* Wind Card */}
+        {/* Wind card */}
         <article className="info-card">
           <h1>WIND</h1>
           <div className="info-card-content">
@@ -134,7 +125,7 @@ export default function InfoBox({ current, location, isMetric }) {
           </div>
         </article>
       </article>
-      {/* Weather Status */}
+      {/* Weather status */}
       <article className="info-stats">
         <h1 className="info-stats-title">WEATHER STATUS</h1>
         <ul className="info-stat-list">

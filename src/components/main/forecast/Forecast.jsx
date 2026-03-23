@@ -59,7 +59,7 @@ const CustomTooltip = ({ active, payload, label, isMetric }) => {
 
 export default function Forecast({ forecast, isMetric = true }) {
   const [activeDay, setActiveDay] = useState(0);
-  const [viewMode, setViewMode] = useState("cards"); // "cards" | "chart"
+  const [viewMode, setViewMode] = useState("cards");
 
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
@@ -78,7 +78,6 @@ export default function Forecast({ forecast, isMetric = true }) {
     );
   }
 
-  // Build chart data: each point is one hour label, with a temp value per day
   const chartData = Array.from({ length: 24 }, (_, i) => {
     const point = {
       time:
@@ -102,7 +101,6 @@ export default function Forecast({ forecast, isMetric = true }) {
 
       {/* Navbar */}
       <nav className="forecast-navbar">
-        {/* Row 1: day buttons (centered on mobile, left on desktop) */}
         <div className="forecast-day-btns">
           {forecastDays.map((day, index) => (
             <button
@@ -118,7 +116,6 @@ export default function Forecast({ forecast, isMetric = true }) {
           ))}
         </div>
 
-        {/* Row 2 on mobile / right side on desktop: chart segment toggle */}
         <div className="forecast-chart-toggle-row">
           <button
             onClick={() => setViewMode("chart")}

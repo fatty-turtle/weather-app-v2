@@ -4,7 +4,6 @@ export default function Compass({ windDegree = 0, size = 100 }) {
   const cx = 100,
     cy = 100;
 
-  // Cardinal and intercardinal labels
   const cardinals = [
     { label: "N", deg: 0 },
     { label: "NE", deg: 45 },
@@ -16,7 +15,6 @@ export default function Compass({ windDegree = 0, size = 100 }) {
     { label: "NW", deg: 315 },
   ];
 
-  // 72 tick marks (every 5°), major at cardinal/intercardinal (every 45°), medium every 15°
   const ticks = Array.from({ length: 72 }, (_, i) => {
     const deg = i * 5;
     const a = (deg / 360) * Math.PI * 2;
@@ -106,21 +104,21 @@ export default function Compass({ windDegree = 0, size = 100 }) {
           </text>
         ))}
 
-        {/* Needle — rotates to windDegree */}
+        {/* Needle */}
         <g style={needleStyle}>
-          {/* North half (highlight color) */}
+          {/* North half*/}
           <polygon
             points={`${cx},${cy - 52} ${cx - 5},${cy + 8} ${cx},${cy + 4} ${cx + 5},${cy + 8}`}
             className="needle-north"
           />
-          {/* South half (foreground) */}
+          {/* South half */}
           <polygon
             points={`${cx},${cy + 52} ${cx - 5},${cy - 8} ${cx},${cy - 4} ${cx + 5},${cy - 8}`}
             className="needle-south"
           />
         </g>
 
-        {/* Center pivot (matches LiveClock) */}
+        {/* Center pivot */}
         <circle cx={cx} cy={cy} r="5" fill="var(--text-highlight)" />
         <circle cx={cx} cy={cy} r="2" fill="var(--background-card)" />
       </svg>

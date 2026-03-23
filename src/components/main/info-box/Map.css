@@ -50,7 +50,6 @@
   opacity: 0.8;
 }
 
-/* Leaflet overrides for theme */
 .leaflet-container {
   border-radius: 1rem !important;
   font-family: inherit !important;
@@ -78,7 +77,6 @@
   background: var(--background-card) !important;
 }
 
-/* Responsive min-size */
 @media (max-width: 768px) {
   .map-container,
   .map-placeholder {

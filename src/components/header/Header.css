@@ -29,14 +29,12 @@ header {
   }
 }
 
-/* ── Search bar wrapper — fills remaining space ── */
 header > form,
 header > div:first-child {
   flex: 1;
   display: flex;
 }
 
-/* ── Buttons group (ThemeBtn + UnitBtn) ── */
 header > div:last-child {
   display: flex;
   flex-direction: row;
@@ -45,7 +43,6 @@ header > div:last-child {
   width: 100%;
 }
 
-/* Each button fills equal share of the row on mobile */
 header > div:last-child > * {
   flex: 1;
 }
@@ -56,7 +53,6 @@ header > div:last-child > * {
     flex-shrink: 0;
   }
 
-  /* Buttons back to natural size on desktop */
   header > div:last-child > * {
     flex: none;
   }
@@ -72,12 +68,10 @@ header > div:last-child > * {
     width: 100%;
   }
 
-  /* UnitBtn full width, keep inner row layout for unit btn + tip same line */
   header > div:last-child > div {
     width: 100%;
   }
 
-  /* Tip tooltip always available, positioned relative to tip-indicator */
   header > div:last-child #tip-box {
     right: auto;
     left: 50%;
@@ -88,7 +82,6 @@ header > div:last-child > * {
   }
 }
 
-/* ── Base button ── */
 button {
   display: inline-flex;
   align-items: center;
@@ -118,7 +111,6 @@ button:active {
   transform: scale(0.97);
 }
 
-/* ── Input ── */
 input {
   height: 40px;
   width: 100%;
@@ -143,7 +135,6 @@ input::placeholder {
   color: var(--text-lowlight, #94a3b8);
 }
 
-/* ── Tip indicator (small circle btn) ── */
 #tip-indicator {
   width: 25px;
   height: 25px;

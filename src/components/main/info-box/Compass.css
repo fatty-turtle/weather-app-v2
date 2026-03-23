@@ -1,4 +1,3 @@
-/* Compass Styles — mirrors LiveClock.css architecture */
 .compass {
   display: inline-block;
   width: clamp(120px, 20vw, 180px);
@@ -24,7 +23,6 @@
   stroke-width: 0.3;
 }
 
-/* Needle halves */
 .needle-north {
   fill: var(--text-highlight);
   filter: drop-shadow(0 0 4px var(--text-highlight));
