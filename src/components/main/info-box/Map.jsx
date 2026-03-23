@@ -49,10 +49,7 @@ export default function Map({ location, size = "clamp(160px, 20vw, 220px)" }) {
         style={{ width: "100%", height: "100%" }}
         ref={mapRef}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`}
-        />
+        <TileLayer url={`https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`} />
         <Marker position={position}>
           <Popup>
             <b>{location.name}</b>
